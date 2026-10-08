@@ -8,6 +8,7 @@ export interface ProductInfo {
   rating: number;
   stock: number;
   brand: string;
+  thumbnail: string;
 }
 
 export class Product {
@@ -20,6 +21,7 @@ export class Product {
   rating: number;
   stock: number;
   brand: string;
+  thumbnail: string;
 
   constructor(info: ProductInfo) {
     this.id = info.id;
@@ -31,5 +33,6 @@ export class Product {
     this.rating = info.rating;
     this.stock = info.stock;
     this.brand = info.brand;
+    this.thumbnail = info.thumbnail;
   }
 }
