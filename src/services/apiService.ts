@@ -1,14 +1,15 @@
-const getData = async () => {
+const getData = async (url: string): Promise<any> => {
+  let response: Response;
   try {
-    const response = await fetch('https://dummyjson.com/products?limit=10');
+    response = await fetch('https://dummyjson.com/products');
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
     const data = await response.json();
-    console.log(data);
+    return data;
   } catch (error) {
     console.error('Fetch error:', error);
   }
 };
 
-getData();
+
