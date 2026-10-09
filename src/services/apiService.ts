@@ -3,12 +3,12 @@ import type { ProductInfo } from "../models/Product.js";
 const SITE_URL = "https://dummyjson.com/products";
 
 const getData = async (url: string): Promise<any> => {
-  let response: Response;
+  
   try {
-    response = await fetch(url);
-    
+    const response = await fetch(url);
+
     if (!response.ok) {
-      throw new Error('Network response was not ok');
+      throw new Error('Network did not respond');
     }
     const data = await response.json();
     return data;

@@ -1,6 +1,5 @@
-import { calculateDiscount } from "../utils/discountCalculator.js";
-import { calculateTax } from "../utils/taxCalculator.js";
-
+import { calculateDiscount } from '../utils/discountCalculator.js';
+import { calculateTax } from '../utils/taxCalculator.js';
 
 export interface ProductInfo {
   id: number;
@@ -9,10 +8,6 @@ export interface ProductInfo {
   category: string;
   price: number;
   discountPercentage: number;
-  rating: number;
-  stock: number;
-  brand: string;
-  thumbnail: string;
 }
 
 export class Product {
@@ -22,10 +17,6 @@ export class Product {
   category: string;
   price: number;
   discountPercentage: number;
-  rating: number;
-  stock: number;
-  brand: string;
-  thumbnail: string;
 
   constructor(info: ProductInfo) {
     this.id = info.id;
@@ -34,10 +25,6 @@ export class Product {
     this.category = info.category;
     this.price = info.price;
     this.discountPercentage = info.discountPercentage;
-    this.rating = info.rating;
-    this.stock = info.stock;
-    this.brand = info.brand;
-    this.thumbnail = info.thumbnail;
   }
 
   getPriceWithDiscount(): number {
@@ -51,14 +38,13 @@ export class Product {
   }
 
   displayDetails(): void {
-    console.log(`${this.title}`);
+    console.log(`--- ${this.title} ---`);
+    console.log(`Id: ${this.id}`);
     console.log(`Description: ${this.description}`);
     console.log(`Category: ${this.category}`);
-    console.log(`Rating: ${this.rating}`);
-    console.log(`Stock: ${this.stock}`);
+    console.log(`Price: ${this.price}`);
     console.log(`Discount: ${this.discountPercentage}%`);
     console.log(`Sales Tax: $${this.getTax()}`);
-    console.log(`Total: $${this.getTotal()}`)
+    console.log(`Total: $${this.getTotal()}`);
   }
 }
-
