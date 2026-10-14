@@ -1,4 +1,6 @@
 import type { ProductInfo } from "../models/Product.js";
+import { ApiError, NetworkError} from "../utils/errorHandler.js"
+
 
 const SITE_URL = "https://dummyjson.com/products";
 
@@ -8,12 +10,22 @@ const getData = async (url: string): Promise<any> => {
     const response = await fetch(url);
 
     if (!response.ok) {
-      throw new Error('Network did not respond');
+      throw new NetworkError('Network did not respond');
     }
     const data = await response.json();
+
+    if (!data) {
+      throw new ApiError("API could not fetch products!")
+    }
     return data;
   } catch (error) {
-    console.error('Fetch error:', error);
+    if (error instanceof NetworkError) {
+      console.error("Network Error:", error)
+    } else if (error instanceof ApiError) {
+      console.error("Api Error:", error)
+    } else if (error instanceof Error) {
+      console.error("Unknown Error:", error)
+    }
   }
 };
 
